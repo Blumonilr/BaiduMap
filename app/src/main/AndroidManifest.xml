@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ucas.lyg.baidumap">
+    package="com.nju.iot.map">
 
     <!-- 访问网络，进行地图相关业务数据请求，包括地图数据，路线规划，POI检索等 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,7 +20,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:name=".MapApplication"
+        android:name="nju.edu.iot.map.MapApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -33,9 +33,9 @@
             android:process=":remote"/>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="ZMxw38Qka7ESuccXyjCvR7IGVeAiPDKY" />
+            android:value="e4FQT6XOao64fkP8uM36rGEDme4dG4Lg" />
         <activity
-            android:name=".MainActivity"
+            android:name="nju.edu.iot.map.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

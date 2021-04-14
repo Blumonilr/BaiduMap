@@ -1,4 +1,4 @@
-package com.ucas.lyg.baidumap;
+package nju.edu.iot.map;
 
 import android.app.Application;
 

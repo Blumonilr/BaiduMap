@@ -1,11 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            keyAlias = 'androiddebugkey'
+            storeFile file('/Users/wulinyang/BaiduMap/debug.keystore')
+            storePassword 'android'
+            keyPassword 'android'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.ucas.lyg.baidumap"
-        minSdkVersion 15
-        targetSdkVersion 30
+        applicationId "nju.edu.iot.map"
+        minSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

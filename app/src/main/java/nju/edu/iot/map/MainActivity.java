@@ -1,10 +1,12 @@
-package com.ucas.lyg.baidumap;
+package nju.edu.iot.map;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -15,6 +17,11 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
+import com.nju.iot.map.R;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.time.Instant;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,9 +62,10 @@ public class MainActivity extends AppCompatActivity {
         //通过LocationClientOption设置LocationClient相关参数
         LocationClientOption option = new LocationClientOption();
         option.setOpenGps(true); // 打开gps
+        option.setNeedDeviceDirect(true);
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy); // 高精度定位
         option.setCoorType("bd09ll"); // 设置坐标类型
-        option.setScanSpan(0);
+        option.setScanSpan(10000);
         //设置locationClientOption
         mLocationClient.setLocOption(option);
         //开启地图定位图层
@@ -94,13 +102,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public class MyLocationListener implements BDLocationListener {
+    public class MyLocationListener extends BDAbstractLocationListener {
         @Override
         public void onReceiveLocation(BDLocation location) {
             // MapView 销毁后不在处理新接收的位置
             if (location == null || mMapView == null) {
                 return;
             }
+            String data = location.getLatitude()+" "+location.getLongitude()+" "+Instant.now();
+            Toast.makeText(getApplicationContext(),data,Toast.LENGTH_SHORT).show();
             myLocationData = new MyLocationData.Builder()
                     .accuracy(location.getRadius())// 设置定位数据的精度信息，单位：米
                     .direction(location.getDirection())// 此处设置开发者获取到的方向信息，顺时针0-360
@@ -113,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             MapStatus.Builder builder = new MapStatus.Builder();
             builder.target(ll).zoom(20.0f);
             mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+
         }
     }
 
