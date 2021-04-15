@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="network_types">
+        <item>HTTP</item>
+        <item>MQTT</item>
+    </string-array>
+</resources>

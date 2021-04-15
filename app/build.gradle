@@ -4,7 +4,7 @@ android {
     signingConfigs {
         debug {
             keyAlias = 'androiddebugkey'
-            storeFile file('/Users/wulinyang/BaiduMap/debug.keystore')
+            storeFile file('../debug.keystore')
             storePassword 'android'
             keyPassword 'android'
         }
