@@ -3,4 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="text_network_path_tips">请输入网络连接地址</string>
+    <string name="start_map">开始连接</string>
 </resources>
